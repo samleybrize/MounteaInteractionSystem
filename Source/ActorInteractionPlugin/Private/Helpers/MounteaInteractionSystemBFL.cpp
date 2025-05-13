@@ -100,7 +100,8 @@ UActorInteractionPluginSettings* UMounteaInteractionSystemBFL::GetInteractionSys
 
 bool UMounteaInteractionSystemBFL::CanExecuteCosmeticEvents(const UWorld* WorldContext)
 {
-	return !UKismetSystemLibrary::IsDedicatedServer(WorldContext);
+	// always return false as the original behavior does not work when the server is also a client
+	return false;
 }
 
 FText UMounteaInteractionSystemBFL::ReplaceRegexInText(const FText& SourceText, const TMap<FString, FText>& Replacements)
