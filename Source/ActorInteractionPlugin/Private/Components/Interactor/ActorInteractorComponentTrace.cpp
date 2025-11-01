@@ -261,8 +261,13 @@ void UActorInteractorComponentTrace::ProcessTrace_Implementation()
 					continue;
 			}
 
-			if (InteractorTag.IsValid() && !localInteractable->Execute_GetInteractableCompatibleTags(Itr).HasTag(InteractorTag))
-			{
+			auto interactableCompatibleTags = localInteractable->Execute_GetInteractableCompatibleTags(Itr);
+
+			if (
+				InteractorTag.IsValid()
+				&& !interactableCompatibleTags.IsEmpty()
+				&& !interactableCompatibleTags.HasTag(InteractorTag)
+			) {
 				LOG_WARNING(TEXT("[ProcessTrace] Interactor Tag %s is not compatible with %s Interactable on %s Actor"), *InteractorTag.ToString(), *localInteractable->Execute_GetInteractableName(Itr).ToString(), *HitActor->GetName())
 				continue;
 			}

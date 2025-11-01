@@ -51,6 +51,6 @@ void PrintInteractionLog(const ELogVerbosity::Type Verbosity, const FString& Mes
 		FMsg::Logf(__FILE__, __LINE__, LogActorInteraction.GetCategoryName(), Verbosity, TEXT("%s"), *Message);
 #endif
 		
-		UKismetSystemLibrary::PrintString(GWorld, Message, true, true, Color, Duration);
+		UKismetSystemLibrary::PrintString(GWorld, Message, false, true, Color, Duration);
 	}
 }
