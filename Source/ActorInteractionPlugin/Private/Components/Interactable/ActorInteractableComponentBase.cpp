@@ -440,6 +440,13 @@ void UActorInteractableComponentBase::SetDefaultState_Implementation(const EInte
 EInteractableStateV2 UActorInteractableComponentBase::GetState_Implementation() const
 { return InteractableState; }
 
+void UActorInteractableComponentBase::SetWidget(UUserWidget* Widget)
+{
+	Super::SetWidget(Widget);
+
+	this->UpdateInteractionWidget();
+}
+
 void UActorInteractableComponentBase::CleanupComponent()
 {
 	Execute_StopHighlight(this);

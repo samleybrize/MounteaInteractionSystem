@@ -475,6 +475,9 @@ protected:
 
 #pragma region InteractionHelpers
 
+public:
+	virtual void SetWidget(UUserWidget* Widget) override;
+
 protected:
 	
 	virtual void CleanupComponent();
