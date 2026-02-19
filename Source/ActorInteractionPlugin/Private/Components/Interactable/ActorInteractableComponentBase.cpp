@@ -440,9 +440,9 @@ void UActorInteractableComponentBase::SetDefaultState_Implementation(const EInte
 EInteractableStateV2 UActorInteractableComponentBase::GetState_Implementation() const
 { return InteractableState; }
 
-void UActorInteractableComponentBase::SetWidget(UUserWidget* Widget)
+void UActorInteractableComponentBase::SetWidget(UUserWidget* WithWidget)
 {
-	Super::SetWidget(Widget);
+	Super::SetWidget(WithWidget);
 
 	this->UpdateInteractionWidget();
 }
@@ -1812,12 +1812,11 @@ void UActorInteractableComponentBase::BindCollisionShape_Implementation(UPrimiti
 	FCollisionShapeCache CachedValues;
 	CachedValues.bGenerateOverlapEvents = PrimitiveComponent->GetGenerateOverlapEvents();
 	CachedValues.CollisionEnabled = PrimitiveComponent->GetCollisionEnabled();
-	CachedValues.CollisionResponse = GetCollisionResponseToChannel(CollisionChannel);
+	CachedValues.CollisionResponse = PrimitiveComponent->GetCollisionResponseToChannel(CollisionChannel);
 	
 	CachedCollisionShapesSettings.Add(PrimitiveComponent, CachedValues);
 	
 	PrimitiveComponent->SetGenerateOverlapEvents(true);
-	PrimitiveComponent->SetCollisionResponseToChannel(CollisionChannel, ECollisionResponse::ECR_Overlap);
 
 	switch (PrimitiveComponent->GetCollisionEnabled())
 	{
