@@ -10,7 +10,7 @@
 
 // This class does not need to be modified.
 UINTERFACE(BlueprintType, Blueprintable)
-class UActorInteractableInterface : public UInterface
+class ACTORINTERACTIONPLUGIN_API UActorInteractableInterface : public UInterface
 {
 	GENERATED_BODY()
 };
